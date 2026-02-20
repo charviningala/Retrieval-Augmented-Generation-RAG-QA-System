@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # RAG Q&A System - ML Concepts
 
 A full-stack Retrieval-Augmented Generation (RAG) Q&A application for answering Machine Learning concept questions. The Flask backend serves both the API and the built React frontend from a single port.
@@ -233,3 +234,7 @@ Create `Dockerfile` in root directory for containerization.
 ## 📄 License
 
 This project uses open-source models and libraries. See individual licenses for details.
+=======
+# Retrieval-Augmented-Generation-RAG-QA-System-
+This project implements a Retrieval-Augmented Generation (RAG) pipeline for domain-specific Question Answering. The system enhances response accuracy by retrieving relevant document chunks using semantic search before generating answers with a language model.
+>>>>>>> 60000ea35ff8e000245c0858bf3091131683c977
