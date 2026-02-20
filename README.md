@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # RAG Q&A System - ML Concepts
 
 A full-stack Retrieval-Augmented Generation (RAG) Q&A application for answering Machine Learning concept questions. The Flask backend serves both the API and the built React frontend from a single port.
