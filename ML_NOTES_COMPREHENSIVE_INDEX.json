@@ -1,0 +1,450 @@
+{
+  "ML_NOTES_ORGANIZATION": {
+    "document": "Machine Learning and Data Mining Lecture Notes (CSC 411/D11)",
+    "source": "411notes.pdf - University of Toronto",
+    "total_pages": 90,
+    "last_updated": "2024",
+    "topics": {
+      "1_introduction": {
+        "title": "Introduction to Machine Learning",
+        "pages": "1-9",
+        "description": "Fundamentals of machine learning, problem formulation, and design choices",
+        "key_concepts": [
+          "Definition of machine learning",
+          "AI, Software Engineering, and Stats perspectives",
+          "Training vs Application phases",
+          "Supervised, Unsupervised, Reinforcement Learning",
+          "Overfitting and Generalization"
+        ],
+        "example_equations": [
+          "Learning task T with performance measure P and experience E"
+        ],
+        "related_topics": ["supervised_learning", "unsupervised_learning"]
+      },
+      "2_linear_regression": {
+        "title": "Linear Regression",
+        "pages": "10-13",
+        "description": "1D and multidimensional linear regression using least-squares estimation",
+        "key_concepts": [
+          "1D Linear Regression",
+          "Multidimensional Inputs",
+          "Multidimensional Outputs",
+          "Least Squares Estimation",
+          "Normal Equations"
+        ],
+        "key_equations": [
+          "y = wx + b",
+          "E(w,b) = Σᵢ(yᵢ - (wxᵢ + b))²",
+          "∂E/∂w = -2Σᵢ(yᵢ - (wxᵢ + b))xᵢ = 0",
+          "w* = (X^T X)^(-1) X^T y",
+          "E(w) = ||y - Xw||²"
+        ],
+        "applications": [
+          "Prediction tasks",
+          "Trend analysis",
+          "Linear relationship modeling"
+        ]
+      },
+      "3_nonlinear_regression": {
+        "title": "Nonlinear Regression",
+        "pages": "14-21",
+        "description": "Basis functions, RBF, Neural Networks, K-NN for nonlinear modeling",
+        "key_concepts": [
+          "Basis Function Regression",
+          "Polynomial Basis",
+          "Radial Basis Functions (RBF)",
+          "Overfitting and Regularization",
+          "Weight Decay",
+          "Artificial Neural Networks",
+          "Sigmoid Functions",
+          "K-Nearest Neighbors"
+        ],
+        "key_equations": [
+          "y = Σₖ wₖ bₖ(x)",
+          "RBF: bₖ(x) = exp(-(x-cₖ)²/(2σₖ²))",
+          "Regularized: E(w) = ||y - Bw||² + λ||w||²",
+          "Sigmoid: g(a) = 1/(1 + e^(-a))",
+          "ANN: y = Σⱼ wⱼg(wⱼ^(1)x + bⱼ) + b"
+        ],
+        "applications": [
+          "Complex pattern fitting",
+          "Non-linear prediction",
+          "Instance-based learning"
+        ]
+      },
+      "4_quadratics": {
+        "title": "Quadratic Functions and Optimization",
+        "pages": "22-25",
+        "description": "Analysis of quadratic functions and their optimization",
+        "key_concepts": [
+          "1D Quadratic Forms",
+          "2D Quadratic Forms",
+          "N-D Quadratic Forms",
+          "Matrix Representation",
+          "Eigenvalue Decomposition",
+          "Stationary Points"
+        ],
+        "key_equations": [
+          "f(x) = x^T Ax + b^T x + c",
+          "∇f = 2Ax + b (for symmetric A)",
+          "Diagonal form: (x-μ)^T Λ(x-μ) + c"
+        ]
+      },
+      "5_probability_theory": {
+        "title": "Basic Probability Theory",
+        "pages": "26-30",
+        "description": "Foundations of probabilistic reasoning and Bayesian approaches",
+        "key_concepts": [
+          "Classical Logic and Uncertainty",
+          "Joint Probability",
+          "Conditional Probability",
+          "Product Rule",
+          "Sum Rule",
+          "Independence",
+          "Marginalization"
+        ],
+        "key_equations": [
+          "P(A,B) = P(A|B)P(B)",
+          "P(A) + P(¬A) = 1",
+          "P(A,B) = P(A)P(B) if independent",
+          "P(B) = ΣᵢP(Aᵢ,B) (marginalization)"
+        ],
+        "applications": [
+          "Uncertainty quantification",
+          "Inference problems",
+          "Decision making under uncertainty"
+        ]
+      },
+      "6_probability_density_functions": {
+        "title": "Probability Density Functions (PDFs)",
+        "pages": "31-40",
+        "description": "Continuous probability distributions with focus on Gaussian",
+        "key_concepts": [
+          "Uniform Distribution",
+          "Gaussian Distribution",
+          "Multivariate Gaussian",
+          "Covariance Matrix",
+          "Eigendecomposition",
+          "Conditional Gaussian",
+          "Diagonalization"
+        ],
+        "key_equations": [
+          "PDFs must satisfy: p(x) ≥ 0, ∫p(x)dx = 1",
+          "Gaussian: G(x|μ,σ²) = (1/√(2πσ²))exp(-(x-μ)²/(2σ²))",
+          "Multivariate: G(x|μ,Σ) = 1/√(2π)^D|Σ| exp(-½(x-μ)^T Σ^(-1)(x-μ))",
+          "Eigendecomposition: Σ = UΛU^T"
+        ]
+      },
+      "7_estimation": {
+        "title": "Parameter Estimation",
+        "pages": "40-46",
+        "description": "Maximum Likelihood, MAP, and Bayes estimation methods",
+        "key_concepts": [
+          "Bayes Rule",
+          "Likelihood",
+          "Prior",
+          "Posterior",
+          "Maximum Likelihood (ML)",
+          "Maximum A Posteriori (MAP)",
+          "Bayes Estimates",
+          "Learning Gaussians",
+          "MAP Nonlinear Regression"
+        ],
+        "key_equations": [
+          "Bayes Rule: P(θ|D) = P(D|θ)P(θ)/P(D)",
+          "ML: θ_ML = argmax P(D|θ)",
+          "MAP: θ_MAP = argmax P(D|θ)P(θ)",
+          "Mean estimate: μ = (1/N)Σxᵢ",
+          "Covariance: Σ = (1/N)Σ(xᵢ - μ)(xᵢ - μ)^T"
+        ]
+      },
+      "8_classification": {
+        "title": "Classification Methods",
+        "pages": "47-57",
+        "description": "Classification techniques including logistic regression and Naive Bayes",
+        "key_concepts": [
+          "Class Conditionals",
+          "Generative Models",
+          "Discriminative Models",
+          "Logistic Regression",
+          "Decision Boundary",
+          "Gaussian Class Conditionals",
+          "Artificial Neural Networks",
+          "K-Nearest Neighbors Classification",
+          "Naive Bayes",
+          "Feature Independence Assumption"
+        ],
+        "key_equations": [
+          "P(C₁|x) = P(x|C₁)P(C₁)/P(x)",
+          "Logistic: P(C₁|x) = 1/(1 + exp(-w·x-b))",
+          "KNN: y_new = sign(Σᵢ∈NK yᵢ)",
+          "Naive Bayes: P(x|C) = ∏ᵢ P(xᵢ|C)"
+        ],
+        "applications": [
+          "Spam filtering",
+          "Image recognition",
+          "Medical diagnosis",
+          "Text classification"
+        ]
+      },
+      "9_gradient_descent": {
+        "title": "Gradient Descent Optimization",
+        "pages": "58-60",
+        "description": "Iterative optimization using gradient information",
+        "key_concepts": [
+          "Gradient Vector",
+          "Steepest Descent",
+          "Step Size (Learning Rate)",
+          "Line Search",
+          "Convergence Criteria",
+          "Finite Differences",
+          "Backpropagation"
+        ],
+        "key_equations": [
+          "w_{t+1} = w_t - λ∇E(w_t)",
+          "∇E = [∂E/∂w₁, ..., ∂E/∂wₙ]^T",
+          "Finite difference: ∂E/∂wᵢ ≈ (E(w+h) - E(w))/h"
+        ],
+        "applications": [
+          "Neural network training",
+          "Logistic regression learning",
+          "Hyperparameter optimization"
+        ]
+      },
+      "10_cross_validation": {
+        "title": "Cross Validation and Model Selection",
+        "pages": "61-63",
+        "description": "Techniques for evaluating and selecting models",
+        "key_concepts": [
+          "Hold-out Validation",
+          "N-Fold Cross-Validation",
+          "Leave-One-Out Cross-Validation",
+          "Overfitting Detection",
+          "Model Comparison",
+          "Hyperparameter Selection"
+        ],
+        "applications": [
+          "Model performance evaluation",
+          "Hyperparameter tuning",
+          "Generalization estimation"
+        ]
+      },
+      "11_bayesian_methods": {
+        "title": "Bayesian Methods",
+        "pages": "64-72",
+        "description": "Full Bayesian approaches with uncertainty quantification",
+        "key_concepts": [
+          "Posterior Distribution",
+          "Bayesian Regression",
+          "Predictive Distribution",
+          "Hyperparameters",
+          "Bayesian Model Selection",
+          "Marginal Data Likelihood",
+          "Occam's Razor",
+          "Model Averaging"
+        ],
+        "key_equations": [
+          "P(w|D) = G(w; w̄, K) where K = (B^T B/σ² + αI)^(-1)",
+          "w̄ = KB^T y/σ²",
+          "P(y_new|D,x_new) = ∫P(y_new|w)P(w|D)dw",
+          "Evidence: p(D|M) = ∫p(D|w,M)p(w|M)dw"
+        ],
+        "applications": [
+          "Uncertainty quantification",
+          "Principled model selection",
+          "Regularization justification"
+        ]
+      },
+      "12_monte_carlo": {
+        "title": "Monte Carlo Methods",
+        "pages": "73-79",
+        "description": "Sampling-based methods for approximating distributions",
+        "key_concepts": [
+          "Monte Carlo Approximation",
+          "Importance Sampling",
+          "Markov Chain Monte Carlo (MCMC)",
+          "Burn-in Period",
+          "Metropolis-Hastings Algorithm",
+          "Gibbs Sampling",
+          "Sampling from Gaussians"
+        ],
+        "key_equations": [
+          "E[ɸ(x)] ≈ (1/N)Σᵢ ɸ(xᵢ)",
+          "E[ɸ(x)] = ∫p(x)ɸ(x)dx = ∫(p*(x)/Z)ɸ(x)dx",
+          "α = min(1, P*(x')q(x|x')/P*(x)q(x'|x))"
+        ]
+      },
+      "13_pca": {
+        "title": "Principal Component Analysis",
+        "pages": "80-87",
+        "description": "Unsupervised dimensionality reduction and feature extraction",
+        "key_concepts": [
+          "Data Standardization",
+          "Covariance Matrix",
+          "Eigendecomposition",
+          "Principal Components",
+          "Variance Maximization",
+          "Reconstruction Error",
+          "Whitening",
+          "Probabilistic PCA"
+        ],
+        "key_equations": [
+          "y = Wx + b",
+          "K = (1/N)Σᵢ(yᵢ - ȳ)(yᵢ - ȳ)^T",
+          "VAV^T = K (eigendecomposition)",
+          "cov(x) = W^T KW = Λ (diagonal)"
+        ],
+        "applications": [
+          "Data visualization",
+          "Feature extraction",
+          "Noise reduction",
+          "Data compression"
+        ]
+      },
+      "14_lagrange_multipliers": {
+        "title": "Lagrange Multipliers",
+        "pages": "88-95",
+        "description": "Constrained optimization techniques",
+        "key_concepts": [
+          "Constrained Optimization",
+          "Lagrangian Function",
+          "KKT Conditions",
+          "Multiple Constraints",
+          "Inequality Constraints",
+          "Least-Squares PCA"
+        ],
+        "key_equations": [
+          "L(x,λ) = E(x) + λg(x)",
+          "∇E + λ∇g = 0",
+          "g(x) = 0 (constraint)"
+        ]
+      },
+      "15_clustering": {
+        "title": "Clustering Algorithms",
+        "pages": "96-106",
+        "description": "Unsupervised learning through cluster discovery",
+        "key_concepts": [
+          "K-means Clustering",
+          "K-medoids",
+          "Mixtures of Gaussians",
+          "EM Algorithm",
+          "Cluster Assignment",
+          "Cluster Centers",
+          "Degeneracy Issues",
+          "Model Selection for Clustering"
+        ],
+        "key_equations": [
+          "μₖ = (Σᵢ zᵢₖ xᵢ)/(Σᵢ zᵢₖ)",
+          "E = Σᵢ Σₖ zᵢₖ ||xᵢ - μₖ||²",
+          "P(xᵢ|k) = G(xᵢ; μₖ, Σₖ)"
+        ],
+        "applications": [
+          "Customer segmentation",
+          "Data discovery",
+          "Image clustering",
+          "Document grouping"
+        ]
+      },
+      "16_hmm": {
+        "title": "Hidden Markov Models",
+        "pages": "107-114",
+        "description": "Sequence modeling with latent state variables",
+        "key_concepts": [
+          "Markov Models",
+          "Hidden States",
+          "Viterbi Algorithm",
+          "Forward-Backward Algorithm",
+          "EM and Baum-Welch",
+          "State Sequences"
+        ],
+        "key_equations": [
+          "P(zₜ|zₜ₋₁) = A (transition matrix)",
+          "P(xₜ|zₜ) = B (emission matrix)",
+          "Forward: αₜ(i) = P(x₁:ₜ, zₜ=i)"
+        ],
+        "applications": [
+          "Speech recognition",
+          "Sequence labeling",
+          "Time series modeling"
+        ]
+      },
+      "17_svm": {
+        "title": "Support Vector Machines",
+        "pages": "115-122",
+        "description": "Large-margin linear and nonlinear classification",
+        "key_concepts": [
+          "Maximum Margin",
+          "Support Vectors",
+          "Slack Variables",
+          "Kernel Trick",
+          "Loss Functions",
+          "Regularization"
+        ],
+        "key_equations": [
+          "maximize: margin = 2/||w||",
+          "subject to: yᵢ(w·xᵢ + b) ≥ 1 - ξᵢ",
+          "Dual: Σᵢ αᵢyᵢxᵢ = w"
+        ],
+        "applications": [
+          "Text classification",
+          "Image classification",
+          "Bioinformatics"
+        ]
+      },
+      "18_adaboost": {
+        "title": "AdaBoost and Boosting",
+        "pages": "123-128",
+        "description": "Ensemble methods for combining weak learners",
+        "key_concepts": [
+          "Boosting",
+          "Decision Stumps",
+          "Weighted Training",
+          "Ensemble Methods",
+          "Error Reduction",
+          "Early Stopping"
+        ],
+        "applications": [
+          "Ensemble classification",
+          "Improving weak learners",
+          "Face detection"
+        ]
+      }
+    },
+    "summary_statistics": {
+      "total_pages": 90,
+      "main_topics": 18,
+      "total_equations": 200,
+      "major_algorithms": [
+        "Linear/Nonlinear Regression",
+        "Logistic Regression",
+        "K-Nearest Neighbors",
+        "K-means Clustering",
+        "Gaussian Mixture Models",
+        "Principal Component Analysis",
+        "Support Vector Machines",
+        "Hidden Markov Models",
+        "AdaBoost"
+      ]
+    },
+    "mathematical_foundations": {
+      "linear_algebra": [
+        "Matrix operations",
+        "Eigendecomposition",
+        "Singular Value Decomposition",
+        "Norms and distances"
+      ],
+      "calculus": [
+        "Gradients and derivatives",
+        "Optimization conditions",
+        "Chain rule",
+        "Integration"
+      ],
+      "probability": [
+        "Probability rules",
+        "Distributions",
+        "Bayesian inference",
+        "Sampling methods"
+      ]
+    }
+  }
+}

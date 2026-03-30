@@ -1,0 +1,373 @@
+{
+  "topics": {
+    "introduction": {
+      "count": 37,
+      "summary": "Machine Learning and Data Mining\nLecture Notes\nCSC 411/D11\nComputer Science Department\nUniversity of Toronto\nVersion: February 6, 2012\nCopyright \u00a9 2010 Aaron Hertzmann and David Fleet\nCSC 411/CSC D11 CONTENTS\nContents\nConventions and Notation iv\n1 Introduction to Machine Learning 1\n1. 1 Types of Machine Learning.",
+      "pages": [
+        "133",
+        "77",
+        "89",
+        "88",
+        "37",
+        "123",
+        "102",
+        "73",
+        "113",
+        "110",
+        "8",
+        "50",
+        "120",
+        "129",
+        "43",
+        "111",
+        "1",
+        "9",
+        "62",
+        "38",
+        "85",
+        "72",
+        "58",
+        "79",
+        "69",
+        "6",
+        "35",
+        "7",
+        "34",
+        "3",
+        "114",
+        "2",
+        "127",
+        "55",
+        "14",
+        "4"
+      ]
+    },
+    "regression": {
+      "count": 26,
+      "summary": "CSC 411/CSC D11 CONTENTS\n7. 5 MAP nonlinear regression.",
+      "pages": [
+        "20",
+        "12",
+        "53",
+        "11",
+        "67",
+        "17",
+        "46",
+        "45",
+        "16",
+        "25",
+        "68",
+        "18",
+        "10",
+        "19",
+        "15",
+        "80",
+        "21",
+        "3",
+        "13",
+        "2",
+        "14"
+      ]
+    },
+    "clustering": {
+      "count": 7,
+      "summary": "CSC 411/CSC D11 CONTENTS\n15 Clustering 92\n15. 020000002 ee ee 92\n15.",
+      "pages": [
+        "104",
+        "98",
+        "99",
+        "105",
+        "103",
+        "4",
+        "97"
+      ]
+    },
+    "other": {
+      "count": 22,
+      "summary": "CSC 411/CSC D11 Acknowledgements\nConventions and Notation\nScalars are written with lower-case italics, e. Column-vectors are written in bold, lower-case:\nx, and matrices are written in bold uppercase: B.",
+      "pages": [
+        "53",
+        "11",
+        "46",
+        "63",
+        "45",
+        "16",
+        "60",
+        "66",
+        "40",
+        "33",
+        "64",
+        "62",
+        "61",
+        "58",
+        "69",
+        "5",
+        "7",
+        "47",
+        "65",
+        "59",
+        "31"
+      ]
+    },
+    "optimization": {
+      "count": 11,
+      "summary": "CSC 411/CSC D11 Quadratics\n4 Quadratics\n\nThe objective functions used in linear least-squares and regularized least-squares are multidimen-\nsional quadratics. We now analyze multidimensional quadratics further.",
+      "pages": [
+        "22",
+        "134",
+        "101",
+        "27",
+        "36",
+        "60",
+        "24",
+        "28",
+        "29",
+        "23",
+        "59"
+      ]
+    },
+    "probability": {
+      "count": 11,
+      "summary": "CSC 411/CSC D11 Basic Probability Theory\n5 Basic Probability Theory\n\nProbability theory addresses the following fundamental question: how do we reason. Reasoning\nis central to many areas of human endeavor, including philosophy (what is the best way to make\ndecisions.",
+      "pages": [
+        "27",
+        "36",
+        "30",
+        "26",
+        "34",
+        "39",
+        "32",
+        "28",
+        "29",
+        "33",
+        "31"
+      ]
+    },
+    "estimation": {
+      "count": 29,
+      "summary": "CSC 411/CSC D11 Estimation\n7 Estimation\nWe now consider the problem of determining unknown parameters of the world based on mea-\nsurements. The general problem is one of inference, which describes the probabilities of these\nunknown parameters.",
+      "pages": [
+        "107",
+        "41",
+        "44",
+        "56",
+        "22",
+        "70",
+        "23",
+        "48",
+        "25",
+        "42",
+        "66",
+        "8",
+        "43",
+        "40",
+        "86",
+        "24",
+        "64",
+        "54",
+        "9",
+        "57",
+        "124",
+        "108",
+        "65",
+        "55",
+        "21",
+        "106",
+        "71",
+        "6"
+      ]
+    },
+    "classification": {
+      "count": 20,
+      "summary": "CSC 411/CSC D11 Classification\n8 Classification\n\nIn classification, we are trying to learn a map from an input space to some finite output space. In\nthe simplest case we simply detect whether or not the input has some property or not.",
+      "pages": [
+        "100",
+        "20",
+        "51",
+        "67",
+        "17",
+        "56",
+        "42",
+        "18",
+        "30",
+        "26",
+        "50",
+        "32",
+        "19",
+        "52",
+        "61",
+        "128",
+        "49",
+        "35",
+        "47"
+      ]
+    },
+    "validation": {
+      "count": 1,
+      "summary": "CSC 411/CSC D11 Cross Validation\nindeed able to observe a new planet, which was later named Neptune. This provided\npowerful validation for their models.",
+      "pages": [
+        "63"
+      ]
+    },
+    "monte_carlo": {
+      "count": 4,
+      "summary": "CSC 411/CSC D11 Monte Carlo Methods\n12 Monte Carlo Methods\nMonte Carlo is an umbrella term referring to a set of numerical techniques for solving one or both\nof these problems:\n1. Approximating expected values that cannot be solved in closed-form\n2.",
+      "pages": [
+        "78",
+        "76",
+        "74",
+        "75"
+      ]
+    },
+    "dim_reduction": {
+      "count": 9,
+      "summary": "CSC 411/CSC D11 Principal Components Analysis\nTo learn the model, we solve the following constrained least-squares problem:\n: , \u2014 (Wx; + b)||. 241\narg min dally (Wx; + b)|| (241)\nsubject to WW =I (242)\nThe constraint W.",
+      "pages": [
+        "91",
+        "54",
+        "81",
+        "84",
+        "83",
+        "82",
+        "51",
+        "87",
+        "92"
+      ]
+    },
+    "advanced": {
+      "count": 26,
+      "summary": "CSC 411/CSC D11 Lagrange Multipliers\najo Cvey |\n45 :. CeCCSD X 05 '\nFigure 22: Illustration of the maximization on a circle problem.",
+      "pages": [
+        "90",
+        "95",
+        "41",
+        "132",
+        "118",
+        "44",
+        "37",
+        "48",
+        "126",
+        "116",
+        "125",
+        "130",
+        "109",
+        "93",
+        "38",
+        "115",
+        "117",
+        "122",
+        "131",
+        "49",
+        "121",
+        "39",
+        "119",
+        "96",
+        "94",
+        "112"
+      ]
+    }
+  },
+  "equations": [
+    {
+      "equation": "0 0002 eee ee ee ee 26\n6 Probability Density Functions (PDFs)",
+      "page": "2",
+      "context": "CSC 411/CSC D11 CONTENTS\nContents\nConventions and Notation iv\n1 Introduction to Machine Learning 1\n1"
+    },
+    {
+      "equation": "(PDFs)",
+      "page": "39",
+      "context": "CSC 411/CSC D11 Probability Density Functions (PDFs)\nwhere\n=> (Sy' pa + U5\" pa) , (121)\nN= (hyp + NR"
+    },
+    {
+      "equation": "3 Markov Chain Monte Carlo(MCMC)",
+      "page": "3",
+      "context": "CSC 411/CSC D11 CONTENTS\n7.5 MAP nonlinear regression ...........0 02.000 ee ee eee ee ee ee 40\n8 Cl"
+    },
+    {
+      "equation": "(MCMC)",
+      "page": "78",
+      "context": "CSC4UCSCDIN Monte Carlo Methods\n12.3. Markov Chain Monte Carlo (MCMC)\n\nMCMC is a very general algori"
+    },
+    {
+      "equation": "(valid email)",
+      "page": "6",
+      "context": "CSC 411/CSC D11 Introduction to Machine Learning\n1 Introduction to Machine Learning\n\nMachine learnin"
+    },
+    {
+      "equation": "(unwanted email)",
+      "page": "6",
+      "context": "CSC 411/CSC D11 Introduction to Machine Learning\n1 Introduction to Machine Learning\n\nMachine learnin"
+    },
+    {
+      "equation": "chine learning is often designed with different considerations than statistics (e.g., speed is\noften more important than accuracy)",
+      "page": "6",
+      "context": "CSC 411/CSC D11 Introduction to Machine Learning\n1 Introduction to Machine Learning\n\nMachine learnin"
+    },
+    {
+      "equation": "and each new email message that we receive (and which to classify)",
+      "page": "6",
+      "context": "CSC 411/CSC D11 Introduction to Machine Learning\n1 Introduction to Machine Learning\n\nMachine learnin"
+    },
+    {
+      "equation": "(and which to classify)",
+      "page": "6",
+      "context": "CSC 411/CSC D11 Introduction to Machine Learning\n1 Introduction to Machine Learning\n\nMachine learnin"
+    },
+    {
+      "equation": "The two most common types of supervised learning are classification\n(where the outputs are discrete labels, as in spam filtering) and regression (where the outputs\nare real-valued).\n\n2. Unsupervised learning, in which we are given a collection of unlabeled data, which we wish\nto analyze and discover patterns within. The two most important examples are dimension\nreduction and clustering.\n\n3. Reinforcement learning, in which an agent (e.g., a robot or controller)",
+      "page": "7",
+      "context": "CSC 411/CSC D11 Introduction to Machine Learning\n1.1 Types of Machine Learning\nSome of the main type"
+    },
+    {
+      "equation": "What criteria (e.g., objective function)",
+      "page": "7",
+      "context": "CSC 411/CSC D11 Introduction to Machine Learning\n1.1 Types of Machine Learning\nSome of the main type"
+    },
+    {
+      "equation": "(where the outputs\nare real-valued)",
+      "page": "7",
+      "context": "CSC 411/CSC D11 Introduction to Machine Learning\n1.1 Types of Machine Learning\nSome of the main type"
+    },
+    {
+      "equation": "or can we use approximations (or hand-\ntuning)",
+      "page": "8",
+      "context": "CSC 411/CSC D11 Introduction to Machine Learning\n\n3. Some types of models and some model parameters "
+    },
+    {
+      "equation": "the model has fit properties\nof the input that are not particularly relevant to the task at hand (e.g., Figures 1 (top row and\nbottom left))",
+      "page": "8",
+      "context": "CSC 411/CSC D11 Introduction to Machine Learning\n\n3. Some types of models and some model parameters "
+    },
+    {
+      "equation": "(or hand-\ntuning)",
+      "page": "8",
+      "context": "CSC 411/CSC D11 Introduction to Machine Learning\n\n3. Some types of models and some model parameters "
+    },
+    {
+      "equation": "(top row and\nbottom left)",
+      "page": "8",
+      "context": "CSC 411/CSC D11 Introduction to Machine Learning\n\n3. Some types of models and some model parameters "
+    },
+    {
+      "equation": "The blue circles are measurements (the training data)",
+      "page": "9",
+      "context": "CSC 411/CSC D11 Introduction to Machine Learning\n|\n| ) \u00b0\nFigure 1: A simple regression problem. The "
+    },
+    {
+      "equation": "Ideally we want to find a model that provides good predictions for new\ninputs (i.e., locations on the x-axis for which we had no training data)",
+      "page": "9",
+      "context": "CSC 411/CSC D11 Introduction to Machine Learning\n|\n| ) \u00b0\nFigure 1: A simple regression problem. The "
+    },
+    {
+      "equation": "(the training data)",
+      "page": "9",
+      "context": "CSC 411/CSC D11 Introduction to Machine Learning\n|\n| ) \u00b0\nFigure 1: A simple regression problem. The "
+    },
+    {
+      "equation": "our goal is to learn a\nmapping y = f(), where x and y are both real-valued scalars (i.e., x",
+      "page": "10",
+      "context": "CSC 411/CSC D11 Linear Regression\n2 Linear Regression\nIn regression, our goal is to learn a mapping "
+    }
+  ],
+  "total_equations": 3091
+}

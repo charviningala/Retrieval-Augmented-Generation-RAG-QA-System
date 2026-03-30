@@ -1,0 +1,1379 @@
+================================================================================
+MACHINE LEARNING: COMPREHENSIVE REFERENCE
+Definition + Supporting Line + Formula for Every Concept
+================================================================================
+
+================================================================================
+1. INTRODUCTION TO MACHINE LEARNING
+================================================================================
+
+CONCEPT: Task (T)
+Definition: What we want to accomplish (classification, regression, clustering)
+Supporting Line: Tasks define the specific problem we're solving - predict labels, continuous values, or group data
+Formula: Task ∈ {Classification, Regression, Ranking, Clustering, Dimensionality Reduction}
+
+CONCEPT: Performance Measure (P)
+Definition: How we evaluate success (error rate, accuracy, precision, recall, F1-score)
+Supporting Line: Performance measures are quantitative metrics showing how well our model performs
+Formula: Accuracy = (TP + TN) / (TP + TN + FP + FN)
+
+CONCEPT: Experience (E)
+Definition: Data the system learns from
+Supporting Line: Training data provides examples for the model to learn patterns and relationships
+Formula: E = {(x₁, y₁), (x₂, y₂), ..., (xₙ, yₙ)}
+
+CONCEPT: Supervised Learning
+Definition: Learning from labeled examples (inputs + desired outputs)
+Supporting Line: We have ground truth labels that guide the learning process
+Formula: Learn f: X → Y from D = {(xᵢ, yᵢ)}
+
+CONCEPT: Unsupervised Learning
+Definition: Finding patterns in unlabeled data without predefined categories
+Supporting Line: Discovers hidden structure without being told what to look for
+Formula: Learn structure from D = {x₁, x₂, ..., xₙ}
+
+CONCEPT: Reinforcement Learning
+Definition: Learning through interaction and reward signals
+Supporting Line: Agent takes actions, receives rewards/penalties, learns optimal behavior
+Formula: Maximize cumulative reward: G_t = Σγᵏ Rₜ₊ₖ
+
+CONCEPT: Overfitting
+Definition: Model memorizes training data instead of learning general patterns
+Supporting Line: Occurs when model is too complex for the data size, capturing noise as patterns
+Formula: Overfitting occurs when: E_train << E_test
+
+CONCEPT: Generalization
+Definition: Ability to perform well on new, unseen data
+Supporting Line: Goal is to make predictions on data the model hasn't encountered
+Formula: Generalization = Low E_test (test error on unseen data)
+
+================================================================================
+2. LINEAR REGRESSION
+================================================================================
+
+CONCEPT: Linear Regression
+Definition: Assumes linear relationship between input features and continuous output
+Supporting Line: Simplest regression model, forms foundation for understanding more complex methods
+Formula: ŷ = w·x + b (univariate), ŷ = w₁x₁ + w₂x₂ + ... + wₙxₙ + b (multivariate)
+
+CONCEPT: Least Squares
+Definition: Minimizing the sum of squared differences between predictions and actual values
+Supporting Line: Optimal criterion that balances positive and negative errors equally
+Formula: E(w,b) = Σᵢ (yᵢ - wxᵢ - b)²
+
+CONCEPT: Normal Equations
+Definition: Closed-form analytical solution for optimal regression weights
+Supporting Line: Directly computes best weights without iterative optimization
+Formula: w* = (X^T X)^(-1) X^T y
+
+CONCEPT: Residuals
+Definition: Differences between predicted and actual values
+Supporting Line: Residual analysis reveals if model is missing patterns
+Formula: eᵢ = yᵢ - ŷᵢ
+
+CONCEPT: Sum of Squared Errors (SSE)
+Definition: Total prediction error metric across all samples
+Supporting Line: Quantifies overall model fit - lower is better
+Formula: SSE = Σᵢ (yᵢ - ŷᵢ)²
+
+CONCEPT: R² Score (Coefficient of Determination)
+Definition: Goodness-of-fit measure showing proportion of variance explained
+Supporting Line: R² = 1 means perfect fit, R² = 0 means no better than predicting mean
+Formula: R² = 1 - (Σᵢ(yᵢ - ŷᵢ)²)/(Σᵢ(yᵢ - ȳ)²)
+
+================================================================================
+3. NONLINEAR REGRESSION & BASIS FUNCTIONS
+================================================================================
+
+CONCEPT: Basis Functions
+Definition: Transformations that map inputs to new feature spaces
+Supporting Line: Allow linear models to learn nonlinear relationships
+Formula: y = Σₖ wₖ φₖ(x)
+
+CONCEPT: Polynomial Basis
+Definition: Powers of input features used as basis functions
+Supporting Line: Creates polynomial features capturing curved relationships
+Formula: φₖ(x) = x^k for k = 0,1,2,...,M
+
+CONCEPT: Radial Basis Functions (RBF)
+Definition: Gaussian-shaped functions centered at specific points
+Supporting Line: Create localized bumps that smoothly vary
+Formula: φₖ(x) = exp(-||x - cₖ||² / (2σₖ²))
+
+CONCEPT: Regularization
+Definition: Penalty terms added to prevent overfitting from complex models
+Supporting Line: Controls model complexity by penalizing large weights
+Formula: E_regularized(w) = E(w) + λ Penalty(w)
+
+CONCEPT: Weight Decay (L2 Regularization)
+Definition: L2 norm penalty pushing weights toward zero
+Supporting Line: Prevents model from relying too heavily on any single feature
+Formula: E(w) = ||y - Φw||² + λ||w||²
+
+CONCEPT: Feature Engineering
+Definition: Manually choosing and creating basis functions
+Supporting Line: Domain knowledge helps select features capturing important patterns
+Formula: x_new = f(x_old) via chosen basis functions
+
+CONCEPT: Model Complexity
+Definition: Number of parameters relative to training data size
+Supporting Line: More features increase expressiveness but risk overfitting
+Formula: Complexity ∝ Number of basis functions M relative to samples n
+
+================================================================================
+4. NEURAL NETWORKS & DEEP LEARNING
+================================================================================
+
+CONCEPT: Neurons
+Definition: Computational units that compute weighted sums and apply activation
+Supporting Line: Mimic biological neurons by combining inputs and producing outputs
+Formula: a = Σᵢ wᵢxᵢ + b, z = g(a)
+
+CONCEPT: Weights & Biases
+Definition: Learnable parameters connecting neurons in the network
+Supporting Line: Weights determine feature importance, biases shift activation curves
+Formula: Parameters to learn: {w₁, w₂, ..., wₙ, b}
+
+CONCEPT: Sigmoid Activation
+Definition: Nonlinear function that squashes values to [0,1] range
+Supporting Line: Smooth S-shaped curve enabling backpropagation
+Formula: σ(a) = 1 / (1 + e^(-a))
+
+CONCEPT: Tanh Activation
+Definition: Hyperbolic tangent function squashing to [-1,+1] range
+Supporting Line: Zero-centered output, often preferred over sigmoid
+Formula: tanh(a) = (e^a - e^(-a)) / (e^a + e^(-a))
+
+CONCEPT: ReLU Activation
+Definition: Rectified Linear Unit - outputs max(0, a)
+Supporting Line: Simple, efficient, and effective for deep networks
+Formula: ReLU(a) = max(0, a)
+
+CONCEPT: Layers
+Definition: Input, hidden, and output layers organized hierarchically
+Supporting Line: Deeper networks learn more abstract representations
+Formula: Deep network: y = W^(L) ReLU(...ReLU(W^(1)x + b^(1))...) + b^(L)
+
+CONCEPT: Feedforward
+Definition: Information flows from inputs through hidden to output
+Supporting Line: Each layer only receives input from previous layer
+Formula: x^(l) = g(W^(l) x^(l-1) + b^(l))
+
+CONCEPT: Backpropagation
+Definition: Efficient gradient computation using chain rule through network
+Supporting Line: Enables training by computing how each param affects loss
+Formula: ∂L/∂wᵢⱼ = (∂L/∂zₖ)(∂zₖ/∂aⱼ)(∂aⱼ/∂wᵢⱼ)
+
+CONCEPT: Universal Approximation
+Definition: Networks can approximate any continuous function given enough neurons
+Supporting Line: Theoretical guarantee of expressiveness with sufficient capacity
+Formula: For any continuous f and ε > 0, ∃ network approximating f with error < ε
+
+================================================================================
+5. LOGISTIC REGRESSION & CLASSIFICATION
+================================================================================
+
+CONCEPT: Logistic Regression
+Definition: Supervised algorithm for binary classification using sigmoid probability function
+Supporting Line: Fundamental algorithm extending linear regression to classification via sigmoid
+Formula: P(y=1|x) = σ(w·x + b) = 1 / (1 + e^(-(w·x + b)))
+
+CONCEPT: Binary Classification
+Definition: Predicting one of two mutually exclusive outcomes
+Supporting Line: Simplest classification task (yes/no, positive/negative, spam/not-spam)
+Formula: ŷ ∈ {0, 1}
+
+CONCEPT: Probability Estimation
+Definition: Output represents class probability rather than hard class label
+Supporting Line: Enables making probabilistic predictions and setting custom thresholds
+Formula: P(y=1|x) ∈ [0,1]
+
+CONCEPT: Sigmoid Function
+Definition: Nonlinear function squashing unbounded values to [0,1] range
+Supporting Line: Perfect for converting linear scores to probabilities
+Formula: σ(z) = 1 / (1 + e^(-z))
+
+CONCEPT: Log-Odds
+Definition: Linear model applied to log probability ratio
+Supporting Line: Natural interpretation: log ratio of class probabilities
+Formula: log(P(y=1|x) / P(y=0|x)) = w·x + b
+
+CONCEPT: Decision Boundary
+Definition: Threshold where model switches from predicting 0 to 1
+Supporting Line: Usually set at P(y=1|x) = 0.5, but can be adjusted
+Formula: Predict y=1 if P(y=1|x) > threshold, else y=0
+
+CONCEPT: Cross-Entropy Loss
+Definition: Information-theoretic loss function for classification
+Supporting Line: Penalizes confident wrong predictions more heavily
+Formula: L(single) = -[y log(ŷ) + (1-y)log(1-ŷ)]
+        L(batch) = -(1/N) Σᵢ [yᵢ log(ŷᵢ) + (1-yᵢ)log(1-ŷᵢ)]
+
+CONCEPT: Maximum Likelihood
+Definition: Finding parameters that maximize probability of observing data
+Supporting Line: Optimal parameter estimation principle for classification
+Formula: θ_ML = argmax_θ P(D|θ) = argmax_θ Πᵢ P(yᵢ|xᵢ,θ)
+
+CONCEPT: Soft Predictions
+Definition: Probabilistic outputs rather than hard class labels
+Supporting Line: Provides confidence estimates useful for ranking and thresholding
+Formula: Output: probability P(y=1|x), not just class label
+
+CONCEPT: Multi-class Classification
+Definition: Extending binary classification to multiple mutually exclusive classes
+Supporting Line: Use softmax to convert K linear scores to K class probabilities
+Formula: P(y=k|x) = e^(wₖ·x) / Σⱼ e^(wⱼ·x)
+
+CONCEPT: Gradient Update
+Definition: Update rule for learning weights via gradient descent
+Supporting Line: Closes loop between loss and model parameters
+Formula: w := w - η * ∂L/∂w = w - η * (-(1/N) Σᵢ (yᵢ - ŷᵢ)xᵢ)
+
+================================================================================
+6. PROBABILITY THEORY FUNDAMENTALS
+================================================================================
+
+CONCEPT: Probability Distribution
+Definition: Complete specification of uncertainty over outcomes
+Supporting Line: Assigns probabilities to all possible events
+Formula: P(A) ∈ [0,1] for all events A
+
+CONCEPT: Sample Space (Ω)
+Definition: Set of all possible outcomes in an experiment
+Supporting Line: Comprehensive list of what could happen
+Formula: Ω = {outcome₁, outcome₂, ...}
+
+CONCEPT: Event
+Definition: Subset of sample space representing one or more outcomes
+Supporting Line: Any collection of possible outcomes we care about
+Formula: A ⊆ Ω
+
+CONCEPT: Joint Probability P(A,B)
+Definition: Probability of both events A and B occurring together
+Supporting Line: Captures how events relate and correlate
+Formula: P(A,B) = P(A ∩ B)
+
+CONCEPT: Marginal Probability P(A)
+Definition: Probability of event A ignoring other variables
+Supporting Line: Obtained by summing over all other variables
+Formula: P(A) = ΣB P(A,B)
+
+CONCEPT: Conditional Probability P(A|B)
+Definition: Probability of A given that B is known to occur
+Supporting Line: Represents updated belief when we have evidence
+Formula: P(A|B) = P(A,B) / P(B)
+
+CONCEPT: Independence
+Definition: Events A,B are independent if occurrence of one doesn't affect the other
+Supporting Line: Simplifies joint probability calculation
+Formula: A ⊥ B ⟺ P(A,B) = P(A)P(B) ⟺ P(A|B) = P(A)
+
+CONCEPT: Conditional Independence
+Definition: Events A,B are independent given event C
+Supporting Line: Reduces complexity when variables are conditionally uncorrelated
+Formula: A ⊥ B|C ⟺ P(A,B|C) = P(A|C)P(B|C)
+
+CONCEPT: Product Rule
+Definition: Relates joint probability to conditional and marginal probabilities
+Supporting Line: Fundamental rule for decomposing joint distributions
+Formula: P(A,B) = P(A|B)P(B) = P(B|A)P(A)
+
+CONCEPT: Sum Rule
+Definition: Probability of event obtained by summing over other variables
+Supporting Line: Method to compute marginal from joint distribution
+Formula: P(A) = ΣB P(A,B)
+
+CONCEPT: Chain Rule
+Definition: Decomposes joint distribution into product of conditionals
+Supporting Line: Expresses multivariate distribution as chain of conditionals
+Formula: P(x₁,...,xₙ) = P(x₁)∏ᵢ₌₂ⁿ P(xᵢ|x₁,...,xᵢ₋₁)
+
+CONCEPT: Total Probability Rule
+Definition: Law stating probability of event from conditional probabilities
+Supporting Line: Useful when we can partition sample space
+Formula: P(B) = ΣA P(B|A)P(A)
+
+================================================================================
+7. PROBABILITY DISTRIBUTIONS
+================================================================================
+
+CONCEPT: Probability Density Function (PDF)
+Definition: Function f(x) ≥ 0 describing probability density at each point
+Supporting Line: Integral over region gives probability of that region
+Formula: P(a ≤ x ≤ b) = ∫ₐᵇ f(x)dx, ∫₋∞^∞ f(x)dx = 1
+
+CONCEPT: Cumulative Distribution Function (CDF)
+Definition: Function F(x) giving cumulative probability up to x
+Supporting Line: Monotonically increasing from 0 to 1
+Formula: F(x) = P(X ≤ x) = ∫₋∞ˣ f(t)dt
+
+CONCEPT: Mean (Expectation) μ
+Definition: Average value of random variable, center of distribution
+Supporting Line: First moment describing location of distribution
+Formula: E[X] = ∫ x f(x)dx = μ
+
+CONCEPT: Variance σ²
+Definition: Average squared deviation from mean, spread of distribution
+Supporting Line: Quantifies how spread out data is
+Formula: Var(X) = E[(X-μ)²] = E[X²] - (E[X])²
+
+CONCEPT: Standard Deviation σ
+Definition: Square root of variance with same units as original variable
+Supporting Line: More interpretable than variance for describing spread
+Formula: σ = √(Var(X))
+
+CONCEPT: Covariance
+Definition: Measure of how two variables move together
+Supporting Line: Positive means they increase together, negative means opposite
+Formula: Cov(X,Y) = E[(X-μₓ)(Y-μᵧ)]
+
+CONCEPT: Correlation
+Definition: Normalized covariance between -1 and +1
+Supporting Line: Quantifies linear relationship strength independent of scale
+Formula: ρ(X,Y) = Cov(X,Y) / (σₓ σᵧ)
+
+CONCEPT: Uniform Distribution
+Definition: Equal probability for all values in interval [a,b]
+Supporting Line: Simplest continuous distribution, no preferences
+Formula: f(x) = 1/(b-a), E[X] = (a+b)/2, Var(X) = (b-a)²/12
+
+CONCEPT: Gaussian (Normal) Distribution
+Definition: Bell-shaped distribution characterized by mean and variance
+Supporting Line: Most common distribution in nature and statistics
+Formula: f(x) = (1/√(2πσ²)) exp(-(x-μ)²/(2σ²))
+
+CONCEPT: Standard Normal Distribution
+Definition: Gaussian with mean 0 and variance 1
+Supporting Line: Universal reference distribution for probabilistic calculations
+Formula: f(z) = (1/√(2π)) exp(-z²/2), Z = (X-μ)/σ
+
+CONCEPT: Multivariate Gaussian
+Definition: Gaussian distribution over multiple dimensions with covariance matrix
+Supporting Line: Extends 1D Gaussian to capture correlations between variables
+Formula: f(x) = (2π)^(-d/2) |Σ|^(-1/2) exp(-½(x-μ)^T Σ^(-1)(x-μ))
+
+CONCEPT: Covariance Matrix Σ
+Definition: d×d matrix capturing variances and all pairwise covariances
+Supporting Line: Symmetric matrix with variances on diagonal, covariances off-diagonal
+Formula: Σ = E[(X-μ)(X-μ)^T]
+
+CONCEPT: Eigendecomposition
+Definition: Decomposition of covariance matrix into eigenvectors and eigenvalues
+Supporting Line: Reveals principal directions of variation and their magnitudes
+Formula: Σ = U Λ U^T where U contains eigenvectors, Λ contains eigenvalues
+
+CONCEPT: Conditional Gaussian Distribution
+Definition: Distribution of subset of variables given values of others
+Supporting Line: Conditioning on some dimensions doesn't change Gaussian form
+Formula: P(x₁|x₂) = N(μ₁ + Σ₁₂Σ₂₂^(-1)(x₂-μ₂), Σ₁₁ - Σ₁₂Σ₂₂^(-1)Σ₂₁)
+
+================================================================================
+8. PARAMETER ESTIMATION: MAXIMUM LIKELIHOOD & BAYESIAN
+================================================================================
+
+CONCEPT: Likelihood Function
+Definition: Probability of observed data as function of parameters
+Supporting Line: Higher likelihood means parameters explain data better
+Formula: L(θ|D) = P(D|θ) = ∏ᵢ P(dᵢ|θ)
+
+CONCEPT: Log-Likelihood
+Definition: Natural logarithm of likelihood for numerical stability and convenience
+Supporting Line: Easier to compute and interpret than raw likelihood
+Formula: ℓ(θ) = log L(θ) = Σᵢ log P(dᵢ|θ)
+
+CONCEPT: Maximum Likelihood Estimate (MLE)
+Definition: Parameter values that maximize probability of observed data
+Supporting Line: Optimal point estimate with nice statistical properties
+Formula: θ_ML = argmax_θ P(D|θ) = argmax_θ Σᵢ log P(dᵢ|θ)
+
+CONCEPT: Prior Distribution P(θ)
+Definition: Belief about parameter values before seeing any data
+Supporting Line: Incorporates domain knowledge and regularization
+Formula: P(θ) specified before observing D
+
+CONCEPT: Posterior Distribution P(θ|D)
+Definition: Updated belief about parameters after integrating observed data
+Supporting Line: Combines prior knowledge with evidence from data
+Formula: P(θ|D) ∝ P(D|θ)P(θ)
+
+CONCEPT: Bayes Rule
+Definition: Relationship between posterior, likelihood, prior, and evidence
+Supporting Line: Fundamental principle for inverting probabilities
+Formula: P(θ|D) = P(D|θ)P(θ) / P(D)
+
+CONCEPT: Evidence (Marginal Likelihood)
+Definition: Probability of data marginalizing over all parameter values
+Supporting Line: Normalization constant needed for proper posterior
+Formula: P(D) = ∫ P(D|θ)P(θ)dθ
+
+CONCEPT: Maximum A Posteriori (MAP)
+Definition: Parameter values maximizing posterior distribution
+Supporting Line: Combines maximum likelihood with prior information
+Formula: θ_MAP = argmax_θ P(θ|D) = argmax_θ [P(D|θ)P(θ)]
+
+CONCEPT: Conjugate Priors
+Definition: Prior and posterior from same probability distribution family
+Supporting Line: Simplifies Bayesian computation analytically
+Formula: Prior p(θ), Likelihood L(θ), Posterior p(θ|D) all same family
+
+CONCEPT: Learning Gaussians from Data
+Definition: Computing mean and covariance from observed samples
+Supporting Line: ML estimates have simple closed forms for Gaussian case
+Formula: μ_ML = (1/n)Σᵢ xᵢ, Σ_ML = (1/n)Σᵢ (xᵢ - μ_ML)(xᵢ - μ_ML)^T
+
+CONCEPT: Uncertainty Quantification
+Definition: Posterior spread reflects how certain parameters are
+Supporting Line: Wide posterior = uncertain, narrow = confident
+Formula: Variance of posterior distribution
+
+================================================================================
+9. OPTIMIZATION FOR MACHINE LEARNING
+================================================================================
+
+CONCEPT: Objective Function
+Definition: Loss function we want to minimize (or maximize)
+Supporting Line: What we optimize during training
+Formula: min_w L(w) = (1/n)Σᵢ Loss(f(xᵢ), yᵢ)
+
+CONCEPT: Gradient ∇f
+Definition: Vector of partial derivatives showing direction of steepest ascent
+Supporting Line: Points uphill; negative gradient points toward lower values
+Formula: ∇f(w) = [∂f/∂w₁, ∂f/∂w₂, ..., ∂f/∂wₙ]
+
+CONCEPT: Gradient Descent
+Definition: Iterative algorithm moving in negative gradient direction
+Supporting Line: Simple and practical first-order optimization method
+Formula: w^(t+1) = w^(t) - η∇f(w^(t))
+
+CONCEPT: Learning Rate (Step Size) η
+Definition: Controls how far we move in each iteration
+Supporting Line: Too small = slow, too large = divergence
+Formula: w^(t+1) = w^(t) - η ∇f(w^(t))
+
+CONCEPT: Convergence
+Definition: Algorithm has converged when gradient becomes negligible
+Supporting Line: Indicates we've found (or approached) a local minimum
+Formula: Stop when ||∇f(w)|| < ε or |f(w^(t)) - f(w^(t-1))| < ε
+
+CONCEPT: Convexity
+Definition: Function curve lies below any line between two points
+Supporting Line: Guarantees unique global minimum
+Formula: f(λx + (1-λ)y) ≤ λf(x) + (1-λ)f(y) for λ ∈ [0,1]
+
+CONCEPT: Hessian Matrix H
+Definition: Matrix of second partial derivatives
+Supporting Line: Describes local curvature of objective function
+Formula: H = ∂²f/∂w∂w^T, Hᵢⱼ = ∂²f/∂wᵢ∂wⱼ
+
+CONCEPT: Positive Definiteness
+Definition: All eigenvalues of matrix are positive
+Supporting Line: Guarantees function is locally convex
+Formula: x^T H x > 0 for all x ≠ 0, or all eigenvalues λᵢ > 0
+
+CONCEPT: Conditioning Number κ
+Definition: Ratio of largest to smallest eigenvalue
+Supporting Line: High κ = slow convergence, low κ = fast convergence
+Formula: κ = λ_max / λ_min
+
+CONCEPT: Line Search
+Definition: Finding optimal step size at each iteration
+Supporting Line: Improves convergence without computing full Hessian
+Formula: η* = argmin_η f(w - η∇f(w))
+
+CONCEPT: Newton's Method
+Definition: Second-order optimization using Hessian and gradient
+Supporting Line: Faster convergence than gradient descent near optimum
+Formula: w^(t+1) = w^(t) - H^(-1)∇f(w^(t))
+
+================================================================================
+10. DIMENSIONALITY REDUCTION: PCA
+================================================================================
+
+CONCEPT: Principal Component Analysis (PCA)
+Definition: Unsupervised method finding orthogonal directions of maximum variance
+Supporting Line: Reduces dimensions while preserving most important variation
+Formula: Directions = eigenvectors of covariance matrix sorted by eigenvalues
+
+CONCEPT: Variance
+Definition: How much data spreads along a particular direction
+Supporting Line: PCA prioritizes preserving directions with high spread
+Formula: Var(u) = (1/n)Σᵢ (u^T xᵢ)²
+
+CONCEPT: Covariance Matrix Σ
+Definition: d×d matrix capturing all pairwise feature relationships
+Supporting Line: Basis for discovering principal components
+Formula: Σ = (1/n)X^T X where X is centered data
+
+CONCEPT: Principal Components
+Definition: Eigenvectors of covariance matrix ordered by importance
+Supporting Line: Represent directions capturing most variance
+Formula: Σ = U Λ U^T, principal components = columns of U
+
+CONCEPT: Explained Variance
+Definition: Amount of variance along each principal component
+Supporting Line: Eigenvalue indicates importance of that component
+Formula: Var(u_i) = λᵢ, fraction explained = λᵢ / Σⱼ λⱼ
+
+CONCEPT: Projection
+Definition: Mapping high-dimensional data onto lower-dimensional subspace
+Supporting Line: Represents original point in new coordinate system
+Formula: z = U_K^T x (project onto K top components)
+
+CONCEPT: Reconstruction
+Definition: Mapping projected low-dimensional data back to original space
+Supporting Line: Enables checking information loss from dimensionality reduction
+Formula: x̂ = U_K z = U_K U_K^T x
+
+CONCEPT: Information Loss
+Definition: Variance not captured by retained dimensions
+Supporting Line: Typically acceptable when discarding noise-dominated components
+Formula: Loss = Σᵢ₌ₖ₊₁ⁿ λᵢ / Σᵢ λᵢ
+
+CONCEPT: Centered Data
+Definition: Data with mean subtracted to center at origin
+Supporting Line: Necessary preprocessing for PCA
+Formula: X̃ = X - μ where μ = (1/n)Σᵢ xᵢ
+
+CONCEPT: Whitening (Decorrelation)
+Definition: Transforming data to uncorrelated features with unit variance
+Supporting Line: Preprocessing step for some algorithms sensitive to scale
+Formula: x_white = Λ^(-1/2) U^T x
+
+CONCEPT: Scree Plot
+Definition: Graph of variance explained vs component number
+Supporting Line: Helps choose K by visualizing where variance drops off
+Formula: Plot eigenvalues λ₁, λ₂, ... in descending order
+
+================================================================================
+11. MODEL SELECTION & VALIDATION
+================================================================================
+
+CONCEPT: Overfitting
+Definition: Low training error but high test error from memorizing data
+Supporting Line: Model too complex, learns noise instead of patterns
+Formula: Model overfits when E_train << E_test
+
+CONCEPT: Underfitting
+Definition: High training error because model is too simple
+Supporting Line: Insufficient capacity to capture data patterns
+Formula: Model underfits when E_train ≈ E_test and both are high
+
+CONCEPT: Bias-Variance Tradeoff
+Definition: Fundamental tradeoff between model simplicity and flexibility
+Supporting Line: Simple models = high bias, complex models = high variance
+Formula: E[E_test] = Bias² + Variance + Noise
+
+CONCEPT: Generalization Error
+Definition: True error on new, unseen data (what we ultimately care about)
+Supporting Line: Proxy is test error; both biased by randomness
+Formula: E_gen ≈ E_test = (1/m)Σᵢ Loss(model(xᵢ), yᵢ)
+
+CONCEPT: Validation Set
+Definition: Separate data used for hyperparameter tuning
+Supporting Line: Neither training nor test data, purely for model selection
+Formula: Data split: training set + validation set + test set
+
+CONCEPT: Test Set
+Definition: Final holdout data for unbiased performance evaluation
+Supporting Line: Touched only once at very end; never used for training
+Formula: E_test = (1/m)Σᵢ∈test Loss(model(xᵢ), yᵢ)
+
+CONCEPT: K-Fold Cross-Validation
+Definition: Partition data into K folds, train K times leaving one out
+Supporting Line: More efficient data use than single hold-out validation
+Formula: E_cv = (1/K)Σₖ E_k where E_k = validation error on fold k
+
+CONCEPT: Leave-One-Out Cross-Validation (LOOCV)
+Definition: K-fold cross-validation with K=n (each sample is test once)
+Supporting Line: Gold standard but computationally expensive
+Formula: E_loo = (1/n)Σᵢ Loss(model_{-i}(xᵢ), yᵢ)
+
+CONCEPT: Stratified Cross-Validation
+Definition: K-fold where each fold maintains class distribution
+Supporting Line: Prevents skewed class ratios in imbalanced datasets
+Formula: Each fold has same class proportions as full dataset
+
+CONCEPT: Early Stopping
+Definition: Stop training when validation error increases despite train error decreasing
+Supporting Line: Simple regularization preventing overfitting during training
+Formula: Stop at epoch t* where E_val(t*) < E_val(t) for all t > t*
+
+================================================================================
+12. BAYESIAN METHODS & PROBABILISTIC INFERENCE
+================================================================================
+
+CONCEPT: Bayesian Inference
+Definition: Updating beliefs about parameters from prior to posterior using data
+Supporting Line: Principled probabilistic reasoning under uncertainty
+Formula: P(θ|D) = P(D|θ)P(θ) / P(D)
+
+CONCEPT: Prior Distribution
+Definition: Belief about parameters before seeing any data
+Supporting Line: Encodes domain knowledge and regularization preferences
+Formula: P(θ) chosen before observing D
+
+CONCEPT: Posterior Distribution
+Definition: Updated belief combining prior and data evidence
+Supporting Line: Represents complete understanding after learning
+Formula: P(θ|D) ∝ P(D|θ)P(θ)
+
+CONCEPT: Predictive Distribution
+Definition: Distribution over new predictions integrating over parameter uncertainty
+Supporting Line: Provides full uncertainty quantification, not just point estimate
+Formula: P(y_new|x_new,D) = ∫ P(y_new|x_new,θ)P(θ|D)dθ
+
+CONCEPT: Conjugate Priors
+Definition: Priors where posterior has same family as prior
+Supporting Line: Enables analytical Bayesian computation
+Formula: Prior + Likelihood → Posterior all same family
+
+CONCEPT: Occam's Razor
+Definition: Automatic preference for simpler models in Bayesian framework
+Supporting Line: Complex models need more parameter volume to achieve same likelihood
+Formula: Complex model penalized by having spread-out prior over parameters
+
+CONCEPT: Hyperparameter Optimization
+Definition: Learning prior parameters by maximizing marginal likelihood
+Supporting Line: Data-driven approach to setting regularization strength
+Formula: α* = argmax_α P(D|α) (maximize evidence)
+
+CONCEPT: Bayes Factor
+Definition: Ratio of marginal likelihoods comparing two models
+Supporting Line: Principled probabilistic model comparison
+Formula: BF = P(D|M₁) / P(D|M₂)
+
+CONCEPT: Bayesian Linear Regression
+Definition: Linear regression with prior on weights, posterior over predictions
+Supporting Line: Gives uncertainty intervals, not just point predictions
+Formula: w ~ N(0, α⁻¹I), P(y|x,D) = N(x^T μ_N, σ² + x^T Σ_N x)
+
+================================================================================
+13. CLUSTERING & UNSUPERVISED LEARNING
+================================================================================
+
+CONCEPT: Cluster
+Definition: Group of similar points found without labels
+Supporting Line: Similarity defined by distance metric or probabilistic model
+Formula: C_k = {xᵢ | assigned to cluster k}
+
+CONCEPT: Distance Metric
+Definition: Function measuring dissimilarity between two points
+Supporting Line: Choice of metric affects which clusters are found
+Formula: d(x,y) = Euclidean, Manhattan, Cosine, etc.
+
+CONCEPT: Euclidean Distance
+Definition: Straight-line distance in space
+Supporting Line: Most common metric for continuous data
+Formula: d(x,y) = √(Σᵢ(xᵢ-yᵢ)²)
+
+CONCEPT: Manhattan Distance
+Definition: Sum of absolute differences (city-block distance)
+Supporting Line: Less sensitive to outliers than Euclidean
+Formula: d(x,y) = Σᵢ|xᵢ-yᵢ|
+
+CONCEPT: Cosine Distance
+Definition: One minus cosine similarity, measuring angle between vectors
+Supporting Line: Invariant to magnitude, good for document/text data
+Formula: d(x,y) = 1 - (x·y)/(||x|| ||y||)
+
+CONCEPT: K-Means Clustering
+Definition: Partitional algorithm minimizing within-cluster distances
+Supporting Line: Simple, fast, scalable but requires specifying K
+Formula: Minimize J = Σᵢ Σₖ rᵢₖ ||xᵢ - μₖ||²
+
+CONCEPT: Centroid
+Definition: Center point representing a cluster
+Supporting Line: Updated each iteration as mean of assigned points
+Formula: μₖ = (Σᵢ rᵢₖ xᵢ) / (Σᵢ rᵢₖ)
+
+CONCEPT: Assignment Step
+Definition: Assigning each point to nearest cluster center
+Supporting Line: Hard assignment in K-means (vs soft in mixture models)
+Formula: rᵢₖ = 1 if k = argmin_j ||xᵢ - μⱼ||², else 0
+
+CONCEPT: Update Step
+Definition: Recomputing cluster centers from assigned points
+Supporting Line: Centers move toward concentration of assigned points
+Formula: μₖ^(new) = (Σᵢ rᵢₖ xᵢ) / (Σᵢ rᵢₖ)
+
+CONCEPT: Hierarchical Clustering
+Definition: Building tree of nested clusters via agglomerative or divisive approach
+Supporting Line: Produces dendrogram showing all clustering scales
+Formula: Merge/split clusters based on linkage criterion (single, complete, average)
+
+CONCEPT: Mixture Models
+Definition: Probabilistic framework assuming data from mixture of distributions
+Supporting Line: Soft assignments reflecting uncertainty
+Formula: P(x) = Σₖ πₖ P(x|zₖ)
+
+CONCEPT: EM Algorithm (Expectation-Maximization)
+Definition: Iterative algorithm for learning mixture model parameters
+Supporting Line: E-step: compute soft assignments; M-step: update parameters
+Formula: E-step: γᵢₖ = πₖN(xᵢ|μₖ,Σₖ)/Σⱼ πⱼN(xᵢ|μⱼ,Σⱼ)
+        M-step: μₖ = Σᵢ γᵢₖ xᵢ / Σᵢ γᵢₖ
+
+CONCEPT: Responsibility
+Definition: Soft assignment showing responsibility of cluster k for point i
+Supporting Line: Probability that cluster k generated point i
+Formula: γᵢₖ = P(zₖ|xᵢ) = πₖN(xᵢ|μₖ,Σₖ) / Σⱼ πⱼN(xᵢ|μⱼ,Σⱼ)
+
+CONCEPT: Silhouette Score
+Definition: Measure of clustering quality from -1 to +1
+Supporting Line: Positive = well-clustered, negative = possibly wrong cluster
+Formula: s(i) = (b(i) - a(i)) / max(a(i), b(i))
+
+================================================================================
+14. MONTE CARLO METHODS & SAMPLING
+================================================================================
+
+CONCEPT: Sampling
+Definition: Generating random samples from probability distributions
+Supporting Line: Foundation for probabilistic inference and simulation
+Formula: Sample xᵢ ~ P(x)
+
+CONCEPT: Empirical Average
+Definition: Sample mean approximating expected value
+Supporting Line: Converges to true expectation as sample size increases
+Formula: Empirical average ≈ (1/N)Σᵢ f(xᵢ)
+
+CONCEPT: Law of Large Numbers
+Definition: Empirical average converges to expectation as N→∞
+Supporting Line: Theoretical justification for Monte Carlo methods
+Formula: (1/N)Σᵢ f(xᵢ) → E[f(X)] as N → ∞
+
+CONCEPT: Monte Carlo Integration
+Definition: Approximating integral as average of random samples
+Supporting Line: Handles high-dimensional integrals better than quadrature
+Formula: ∫ g(x)p(x)dx ≈ (1/N)Σᵢ g(xᵢ) where xᵢ ~ p(x)
+
+CONCEPT: Importance Sampling
+Definition: Reweighting samples from proposal distribution to match target
+Supporting Line: Handles hard-to-sample distributions
+Formula: ∫ g(x)p(x)dx = ∫ g(x)[p(x)/q(x)]q(x)dx ≈ (1/N)Σᵢ g(xᵢ)w(xᵢ)
+
+CONCEPT: Proposal Distribution
+Definition: Easy-to-sample distribution different from target
+Supporting Line: Chosen for tractability, not accuracy
+Formula: q(x) chosen to be easy to sample from
+
+CONCEPT: Importance Weights
+Definition: Correction factors for reweighting proposal samples
+Supporting Line: Ratio of target to proposal probability
+Formula: w(xᵢ) = p(xᵢ) / q(xᵢ)
+
+CONCEPT: Effective Sample Size
+Definition: Number of unweighted samples equivalent to weighted sample set
+Supporting Line: Many small weights = low effective sample size
+Formula: N_eff = 1 / Σᵢ w̃(xᵢ)²
+
+CONCEPT: Markov Chain
+Definition: Random sequence where future depends only on present state
+Supporting Line: Basis for MCMC methods in probabilistic inference
+Formula: P(xₜ₊₁|x₁,...,xₜ) = P(xₜ₊₁|xₜ)
+
+CONCEPT: Stationary Distribution
+Definition: Long-run distribution of Markov chain
+Supporting Line: What chain converges to regardless of initialization
+Formula: π(x') = ∫ T(x'|x)π(x)dx
+
+CONCEPT: Markov Chain Monte Carlo (MCMC)
+Definition: Methods generating samples from target distribution via Markov chain
+Supporting Line: Handles complex distributions without knowing normalization
+Formula: Construct chain → run → discard burn-in samples → use rest
+
+CONCEPT: Metropolis-Hastings Algorithm
+Definition: MCMC method using accept/reject to ensure correct distribution
+Supporting Line: Fundamental algorithm combining proposal with acceptance probability
+Formula: Accept x_new with probability α = min(1, π(x_new)q(x_old|x_new) / [π(x_old)q(x_new|x_old)])
+
+CONCEPT: Gibbs Sampling
+Definition: MCMC updating each variable from conditional distribution
+Supporting Line: Special case of MH with acceptance probability = 1
+Formula: xⱼ^(t) ~ P(xⱼ|x₁^(t),...,x_{j-1}^(t),x_{j+1}^(t-1),...,xₙ^(t-1))
+
+CONCEPT: Burn-in
+Definition: Initial samples discarded before using chain output
+Supporting Line: Allows chain to forget initial state and reach stationary distribution
+Formula: Discard first M samples, use samples M+1, M+2, ...
+
+================================================================================
+15. SUPPORT VECTOR MACHINES (SVM)
+================================================================================
+
+CONCEPT: Support Vector Machines
+Definition: Powerful classification algorithm finding optimal separating hyperplane
+Supporting Line: Maximizes margin between classes for robust generalization
+Formula: f(x) = w·x + b, maximize margin = 2/||w||
+
+CONCEPT: Margin
+Definition: Distance between decision boundary and nearest points
+Supporting Line: Larger margin = more robust to noise
+Formula: Margin = 2/||w||
+
+CONCEPT: Support Vectors
+Definition: Points touching the margin boundary - they entirely determine classifier
+Supporting Line: Sparse representation using only boundary points
+Formula: Points with yᵢ(w·xᵢ + b) = 1 ± ξᵢ
+
+CONCEPT: Decision Boundary
+Definition: Hyperplane separating two classes
+Supporting Line: Perpendicular to weight vector w
+Formula: w·x + b = 0
+
+CONCEPT: Hard Margin SVM
+Definition: SVM for linearly separable data with no violations allowed
+Supporting Line: Perfect separation when possible
+Formula: yᵢ(w·xᵢ + b) ≥ 1 for all i
+
+CONCEPT: Soft Margin SVM
+Definition: SVM allowing some margin violations for realistic data
+Supporting Line: Handles non-separable data and outliers gracefully
+Formula: yᵢ(w·xᵢ + b) ≥ 1 - ξᵢ where ξᵢ ≥ 0
+
+CONCEPT: Slack Variables ξᵢ
+Definition: Measure degree of margin violation for each sample
+Supporting Line: ξᵢ = 0 if correctly classified, > 0 if violated
+Formula: ξᵢ ≥ 0 represents how far point i violates margin
+
+CONCEPT: Hinge Loss
+Definition: Loss function = 0 if correct, penalty proportional to violation
+Supporting Line: Naturally used in SVM objective
+Formula: Loss = max(0, 1 - yᵢ(w·xᵢ + b))
+
+CONCEPT: Regularization Parameter C
+Definition: Controls tradeoff between margin size and violation penalties
+Supporting Line: Large C = small margin, strict constraints; small C = allow violations
+Formula: minimize (1/2)||w||² + C Σᵢ ξᵢ
+
+CONCEPT: Dual Problem
+Definition: Reformulation using Lagrange multipliers, easier to solve
+Supporting Line: Enables kernel trick for nonlinear classification
+Formula: maximize Σᵢ αᵢ - (1/2)Σᵢⱼ yᵢyⱼ αᵢαⱼ k(xᵢ,xⱼ)
+
+CONCEPT: Kernel Trick
+Definition: Computing high-dimensional dot products without explicit transform
+Supporting Line: Enables nonlinear classification with linear algorithm
+Formula: k(xᵢ,xⱼ) = φ(xᵢ)·φ(xⱼ) computed without computing φ
+
+CONCEPT: Linear Kernel
+Definition: No transformation applied (similarity = dot product)
+Supporting Line: For linearly separable data
+Formula: k(x,y) = x·y
+
+CONCEPT: Polynomial Kernel
+Definition: Kernel creating polynomial decision boundaries
+Supporting Line: Degree d controls boundary complexity
+Formula: k(x,y) = (x·y + c)^d
+
+CONCEPT: RBF (Gaussian) Kernel
+Definition: Radial basis function kernel for smooth boundaries
+Supporting Line: Most flexible; γ parameter controls locality
+Formula: k(x,y) = exp(-γ||x-y||²)
+
+CONCEPT: Quadratic Programming
+Definition: Convex optimization problem with QP solvers
+Supporting Line: Guarantees finding global optimum
+Formula: min (1/2)x^T Px + q^T x subject to linear constraints
+
+================================================================================
+16. REINFORCEMENT LEARNING PRINCIPLES
+================================================================================
+
+CONCEPT: Reinforcement Learning
+Definition: Learning through interaction with environment and reward signals
+Supporting Line: Agent learns to take actions maximizing long-term cumulative reward
+Formula: Policy π maps states to actions, receives rewards
+
+CONCEPT: State s
+Definition: Complete description of environment situation
+Supporting Line: Contains all information needed for decision-making
+Formula: s ∈ S (state space)
+
+CONCEPT: Action a
+Definition: Choice available to agent in particular state
+Supporting Line: Changes state and generates reward
+Formula: a ∈ A(s) (action set for state s)
+
+CONCEPT: Reward r
+Definition: Immediate feedback for taking action
+Supporting Line: Signal guiding learning toward desired behavior
+Formula: r = R(s,a) or r ~ P(r|s,a)
+
+CONCEPT: Policy π
+Definition: Mapping from states to actions (deterministic or stochastic)
+Supporting Line: Dictates behavior; learning finds optimal policy
+Formula: π(a|s) = probability of action a in state s
+
+CONCEPT: Value Function V(s)
+Definition: Expected cumulative discounted reward from state s
+Supporting Line: Judges goodness of states
+Formula: V^π(s) = E[Rₜ₊₁ + γRₜ₊₂ + γ²Rₜ₊₃ + ... | Sₜ=s]
+
+CONCEPT: Action-Value Function Q(s,a)
+Definition: Expected value of taking action a in state s
+Supporting Line: Judges goodness of state-action pairs
+Formula: Q^π(s,a) = E[Rₜ₊₁ + γRₜ₊₂ + ... | Sₜ=s, Aₜ=a]
+
+CONCEPT: Markov Decision Process (MDP)
+Definition: Formal framework for sequential decision-making
+Supporting Line: State transitions and rewards depend on last state/action only
+Formula: MDP = (S, A, P(s'|s,a), R(s,a), γ)
+
+CONCEPT: Markov Property
+Definition: Future depends only on current state, not history
+Supporting Line: Simplifies problem structure for tractable computation
+Formula: P(sₜ₊₁|s₁,...,sₜ) = P(sₜ₊₁|sₜ)
+
+CONCEPT: Discount Factor γ
+Definition: Weight on future rewards (0 ≤ γ < 1)
+Supporting Line: γ near 0 = short-term focus, γ near 1 = long-term focus
+Formula: G_t = Rₜ₊₁ + γRₜ₊₂ + γ²Rₜ₊₃ + ...
+
+CONCEPT: Bellman Equation
+Definition: Recursive relationship between value and successor value
+Supporting Line: Foundation for dynamic programming solutions
+Formula: V(s) = E[R + γV(s') | s, π]
+
+CONCEPT: Bellman Optimality Equation
+Definition: Recursive relation for optimal value function
+Supporting Line: Optimal action = one maximizing sum of immediate reward and future value
+Formula: V*(s) = max_a Σₛ' P(s'|s,a)[R(s,a,s') + γV*(s')]
+
+CONCEPT: Value Iteration
+Definition: Algorithm computing optimal value function
+Supporting Line: Repeatedly applies Bellman update until convergence
+Formula: V_k(s) := max_a Σₛ' P(s'|s,a)[R + γV_{k-1}(s')]
+
+CONCEPT: Policy Iteration
+Definition: Algorithm alternating between policy evaluation and improvement
+Supporting Line: Often converges faster than value iteration
+Formula: Evaluate V^π, then improve π ← greedy(V^π)
+
+CONCEPT: Temporal Difference (TD) Learning
+Definition: Learning from observed transitions without knowing environment model
+Supporting Line: Combines Monte Carlo sampling with bootstrapping
+Formula: TD error δ = Rₜ₊₁ + γV(Sₜ₊₁) - V(Sₜ)
+        V(Sₜ) := V(Sₜ) + α δ
+
+CONCEPT: Q-Learning
+Definition: Off-policy learning of action values without knowing transitions
+Supporting Line: Learns optimal policy while following exploratory policy
+Formula: Q(s,a) := Q(s,a) + α[r + γ max_{a'} Q(s',a') - Q(s,a)]
+
+CONCEPT: Exploration vs Exploitation
+Definition: Tradeoff between trying new actions (explore) and repeating good ones (exploit)
+Supporting Line: Must explore to find good actions but use what works
+Formula: Epsilon-greedy: with prob ε pick random action, else pick best
+
+CONCEPT: Epsilon-Greedy
+Definition: Simple exploration strategy combining exploitation with random actions
+Supporting Line: Balance found by tuning ε parameter
+Formula: Action = argmax_a Q(s,a) with prob 1-ε, else random action
+
+================================================================================
+17. ENSEMBLE METHODS & BOOSTING
+================================================================================
+
+CONCEPT: Ensemble Methods
+Definition: Combine multiple weak models into strong, robust predictions
+Supporting Line: Diversity is key - models making different errors cancel out
+Formula: f_ensemble(x) = Combine(f₁(x), f₂(x), ..., fₖ(x))
+
+CONCEPT: Weak Learner
+Definition: Classifier only slightly better than random (accuracy > 50%)
+Supporting Line: Weak learners alone perform poorly; ensemble makes them strong
+Formula: Accuracy(weak) > 50% for binary classification
+
+CONCEPT: Base Model
+Definition: Individual learner combined in ensemble
+Supporting Line: Could be decision tree, neural network, etc.
+Formula: Base models: f₁, f₂, ..., fₖ
+
+CONCEPT: Prediction Aggregation
+Definition: Combining predictions from multiple models
+Supporting Line: Different aggregation methods for regression vs classification
+Formula: Regression: f_ensemble = (1/K)Σₖ fₖ(x)
+        Classification: f_ensemble = mode(f₁(x), f₂(x), ...)
+
+CONCEPT: Bagging (Bootstrap Aggregating)
+Definition: Training models on random subsamples with replacement
+Supporting Line: Reduces variance through averaging independent models
+Formula: For each of K iterations, sample with replacement, train model
+
+CONCEPT: Bootstrap Sample
+Definition: Random sample with replacement from original data
+Supporting Line: Some samples appear multiple times, others not at all
+Formula: D_i = sample(D, size=n, replace=True)
+
+CONCEPT: Random Forest
+Definition: Bagging of decision trees with random feature subsets
+Supporting Line: Additional randomness decorrelates trees further
+Formula: At each split, consider random √d (classification) or d/3 (regression) features
+
+CONCEPT: Out-of-Bag (OOB) Error
+Definition: Validation error estimated from samples not in each bootstrap
+Supporting Line: Provides unbiased error estimate without separate validation set
+Formula: E_oob = error on samples not in bootstrap sample
+
+CONCEPT: Boosting
+Definition: Sequential learning reweighting misclassified samples
+Supporting Line: Forces new models to focus on hard examples
+Formula: Iteratively increase weight on mistakes
+
+CONCEPT: AdaBoost (Adaptive Boosting)
+Definition: Boosting algorithm combining weak classifiers with accuracy-based weights
+Supporting Line: Theoretically guaranteed exponential error reduction
+Formula: Weighted error: ε = Σᵢ wᵢ 𝟙[hₜ(xᵢ)≠yᵢ]
+        Weight: αₜ = (1/2)log((1-εₜ)/εₜ)
+
+CONCEPT: Sample Reweighting
+Definition: Importance weighting emphasizing hard or misclassified samples
+Supporting Line: Focuses learning on difficult examples
+Formula: wᵢ := wᵢ exp(-αₜ yᵢ hₜ(xᵢ)) / Zₜ
+
+CONCEPT: Gradient Boosting
+Definition: Boosting by fitting new models to loss gradient (residuals)
+Supporting Line: Generalizes beyond AdaBoost; works with any differentiable loss
+Formula: fₜ(x) = f_{t-1}(x) + η hₜ(x)
+
+CONCEPT: Residual Learning
+Definition: Training next model on prediction errors of previous models
+Supporting Line: Each model corrects predecessor's mistakes
+Formula: Residual = true - predicted, fit model to residuals
+
+CONCEPT: Stacking
+Definition: Training meta-learner on predictions from base models
+Supporting Line: Two-level approach to combining learners
+Formula: Level-0: get predictions z = [f₁(x), ...], Level-1: learn g(z)
+
+================================================================================
+18. DEEP LEARNING & CONVOLUTIONAL NETWORKS
+================================================================================
+
+CONCEPT: Deep Learning
+Definition: Training neural networks with many layers
+Supporting Line: Depth enables learning hierarchical feature representations
+Formula: Multiple layers: y = f_L(f_{L-1}(...f₁(x)))
+
+CONCEPT: Hierarchical Features
+Definition: Early layers learn simple features, deeper layers combine them
+Supporting Line: Low-level edges → parts → objects
+Formula: Layer k processes transformed input from layer k-1
+
+CONCEPT: Convolutional Layer
+Definition: Layer applying filters across input spatially
+Supporting Line: Weight sharing and local connectivity reduce parameters
+Formula: (X * W)[i,j] = Σₐ Σᵦ X[i+a,j+b] · W[a,b]
+
+CONCEPT: Convolutional Filter
+Definition: Learnable pattern detector applied locally
+Supporting Line: Early filters detect edges/textures, deeper filters recognize objects
+Formula: Filter W detects patterns in local receptive field
+
+CONCEPT: Receptive Field
+Definition: Input region affecting a neuron's output
+Supporting Line: Grows with depth; deep layers see larger context
+Formula: RF_1 = filter_size, RF_l = RF_{l-1} + product(filter_sizes)
+
+CONCEPT: Pooling Layer
+Definition: Downsampling preserving important information
+Supporting Line: Reduces computation, increases receptive field
+Formula: Max pooling: output = max(window), Avg pooling: output = mean(window)
+
+CONCEPT: Max Pooling
+Definition: Taking maximum value in pooling window
+Supporting Line: Retains most salient feature in region
+Formula: y[i,j] = max(X[i:i+p, j:j+p])
+
+CONCEPT: Stride
+Definition: Step size when sliding filter or pooling window
+Supporting Line: Larger stride = more downsampling
+Formula: Output size = [(H - F)/S] + 1 where S = stride
+
+CONCEPT: Padding
+Definition: Adding zeros around input to control output size
+Supporting Line: "Same" padding preserves spatial dimensions
+Formula: Output size with padding = [(H + 2P - F)/S] + 1
+
+CONCEPT: Convolutional Neural Network (CNN)
+Definition: Neural network using convolutional and pooling layers
+Supporting Line: Exploits spatial structure in images
+Formula: Stack of Conv → Activation → Pooling blocks
+
+CONCEPT: Recurrent Neural Network (RNN)
+Definition: Network with hidden state recurrence for sequence processing
+Supporting Line: Processes sequences by maintaining hidden state
+Formula: hₜ = tanh(Wₓₕ xₜ + Wₕₕ h_{t-1} + bₕ)
+
+CONCEPT: Hidden State
+Definition: Accumulated information from previous time steps
+Supporting Line: Acts as memory, passes forward to next step
+Formula: hₜ carries information about x₁:t
+
+CONCEPT: Vanishing Gradient Problem
+Definition: Gradients shrink exponentially through many layers/steps
+Supporting Line: Prevents learning long-range dependencies
+Formula: ∂L/∂h₁ = ∂L/∂hₜ · ∂hₜ/∂h₁, product of many terms < 1
+
+CONCEPT: Long Short-Term Memory (LSTM)
+Definition: Gated RNN cell solving vanishing gradient problem
+Supporting Line: Maintains cell state with additive updates
+Formula: Cell state cₜ = fₜ ⊙ c_{t-1} + iₜ ⊙ c̃ₜ
+
+CONCEPT: LSTM Gates
+Definition: Multiplicative gates controlling information flow
+Supporting Line: Forget, input, output gates; selectively pass information
+Formula: Input gate iₜ, Forget gate fₜ, Output gate oₜ all computed via sigmoid
+
+CONCEPT: Attention Mechanism
+Definition: Computing weights showing importance of each input element
+Supporting Line: Model focuses on relevant parts
+Formula: Attention = softmax(QK^T/√d) · V
+
+CONCEPT: Self-Attention
+Definition: Attention over same sequence (each position attends to all others)
+Supporting Line: Captures dependencies between positions
+Formula: Each position computes weighted sum of all positions
+
+CONCEPT: Transformer
+Definition: Architecture using stacked self-attention + feed-forward blocks
+Supporting Line: State-of-the-art for NLP and increasingly vision
+Formula: Transformer = Stack of (MultiHeadAttention + FFN)
+
+CONCEPT: Transfer Learning
+Definition: Pre-train on large dataset, fine-tune on target task
+Supporting Line: Leverages knowledge, reduces data/compute needed
+Formula: Weights = pre-trained + small adjustment on target
+
+CONCEPT: Batch Normalization
+Definition: Normalizing layer inputs to reduce internal covariate shift
+Supporting Line: Stabilizes training, enables higher learning rates
+Formula: ẑ = (z - μ_batch) / √(σ²_batch + ε), y = γẑ + β
+
+CONCEPT: Dropout
+Definition: Randomly deactivating neurons during training
+Supporting Line: Forces network to learn redundant representations
+Formula: During training: neuron on with prob 1-p, else 0
+
+CONCEPT: Residual Connections (Skip Connections)
+Definition: Adding input directly to output enabling identity mapping
+Supporting Line: Facilitate gradient flow in very deep networks
+Formula: y = activation(W x + x)
+
+CONCEPT: Gradient Descent Optimizers
+Definition: Algorithms for updating weights based on gradients
+Supporting Line: Momentum and adaptive methods improve convergence
+Formula: w := w - learning_rate * gradient
+
+CONCEPT: Adam Optimizer
+Definition: Combines momentum with adaptive per-parameter learning rates
+Supporting Line: Popular default choice for deep learning
+Formula: m := βₘm + (1-βₘ)∇L, v := βᵥv + (1-βᵥ)(∇L)²
+        w := w - α m̂/(√v̂ + ε)
+
+================================================================================
+19. REGULARIZATION TECHNIQUES
+================================================================================
+
+CONCEPT: Regularization
+Definition: Penalty or constraint preventing overly complex models
+Supporting Line: Encourages simpler models that generalize better
+Formula: L_total = L_data + λ L_regularization
+
+CONCEPT: Weight Decay (L2 Regularization)
+Definition: L2 norm penalty on weights pushing toward zero
+Supporting Line: Most common form of regularization
+Formula: L_reg = λ Σⱼ wⱼ²
+
+CONCEPT: Ridge Regression
+Definition: Linear regression with L2 regularization
+Supporting Line: Always has unique solution (X^T X + λI invertible)
+Formula: E(w) = ||y - Xw||² + λ||w||²
+
+CONCEPT: Lasso Regression (L1 Regularization)
+Definition: Penalty on L1 norm producing sparse weights
+Supporting Line: Automatic feature selection - some weights exactly zero
+Formula: E(w) = ||y - Xw||² + λ||w||₁
+
+CONCEPT: Sparse Weights
+Definition: Many weights exactly zero after L1 regularization
+Supporting Line: Identifies truly important features
+Formula: After thresholding, wⱼ = 0 for unimportant features
+
+CONCEPT: Elastic Net
+Definition: Combines L1 and L2 regularization
+Supporting Line: Balances feature selection and stability
+Formula: E(w) = ||y - Xw||² + λ₁||w||₁ + λ₂||w||²
+
+CONCEPT: Early Stopping
+Definition: Stop training when validation error increases
+Supporting Line: Simple method preventing overfitting
+Formula: Stop at epoch t* with best E_val
+
+CONCEPT: Data Augmentation
+Definition: Creating synthetic variations of training examples
+Supporting Line: Increases effective dataset size
+Formula: Augmented data D' ⊃ D includes original + variations
+
+CONCEPT: Image Augmentation
+Definition: Geometric and photometric transformations
+Supporting Line: Rotations, crops, flips, color jitter
+Formula: Augmented x' = transform(x) with p(transform) ~ distribution
+
+CONCEPT: Mixup
+Definition: Linear interpolation between samples and labels
+Supporting Line: Smooths decision boundaries
+Formula: x_mixed = λx₁ + (1-λ)x₂, y_mixed = λy₁ + (1-λ)y₂
+
+CONCEPT: Batch Normalization
+Definition: Standardizing layer inputs reducing internal covariate shift
+Supporting Line: Regularization effect + enables higher learning rates
+Formula: ẑ = (z - μ_batch) / √(σ²_batch + ε)
+
+CONCEPT: Dropout
+Definition: Randomly deactivating neurons with probability p
+Supporting Line: Prevents co-adaptation between neurons
+Formula: During training: a_i ~ Bernoulli(1-p), output = a_i * z_i
+
+CONCEPT: L∞ Max Norm Constraint
+Definition: Bounding weight vector norm to constant
+Supporting Line: Hard constraint on complexity
+Formula: ||w||_∞ ≤ c
+
+CONCEPT: Curriculum Learning
+Definition: Training on easy examples first, gradually increasing difficulty
+Supporting Line: Prevents early overfitting to noise
+Formula: Order examples by difficulty, train in increasing order
+
+================================================================================
+20. PROBABILISTIC GRAPHICAL MODELS
+================================================================================
+
+CONCEPT: Probabilistic Graphical Model
+Definition: Graph representing joint distribution and conditional dependencies
+Supporting Line: Compact factorization enabling tractable computation
+Formula: P(X₁,...,Xₙ) = Product of local factors
+
+CONCEPT: Bayesian Network
+Definition: Directed acyclic graph where edges show causal influence
+Supporting Line: Encodes conditional dependencies and causality
+Formula: P(X₁,...,Xₙ) = ∏ᵢ P(Xᵢ|Parents(Xᵢ))
+
+CONCEPT: Markov Random Field
+Definition: Undirected graph representing symmetric dependencies
+Supporting Line: More general than Bayesian networks
+Formula: P(x) = (1/Z) ∏_c ψc(xc)
+
+CONCEPT: Node
+Definition: Random variable in the graphical model
+Supporting Line: Represents observed or latent quantity
+Formula: Node corresponds to one random variable
+
+CONCEPT: Edge
+Definition: Connection between nodes representing dependency
+Supporting Line: Presence/absence indicates conditional (in)dependence
+Formula: Edge between i and j means dependency
+
+CONCEPT: Conditional Independence
+Definition: Two variables independent given third
+Supporting Line: Represented by missing connections through separating nodes
+Formula: X ⊥ Y | Z
+
+CONCEPT: D-Separation (Directed Separation)
+Definition: Criterion for conditional independence in Bayesian networks
+Supporting Line: Determines which variables are independent
+Formula: If d-separated, then variables are independent
+
+CONCEPT: Clique
+Definition: Fully connected subset of nodes
+Supporting Line: Used in undirected model factorization
+Formula: Clique C = subset where all pairs have edges
+
+CONCEPT: Factor
+Definition: Local function involving subset of variables
+Supporting Line: Represents local compatibility or probability
+Formula: ψc(xc) is factor on clique c
+
+CONCEPT: Partition Function
+Definition: Normalization constant for undirected models
+Supporting Line: Makes probabilities sum to 1
+Formula: Z = Σ_x ∏_c ψc(xc)
+
+CONCEPT: Energy Function
+Definition: Negative log factor representation
+Supporting Line: Alternative parameterization
+Formula: P(x) = (1/Z) exp(-E(x))
+
+CONCEPT: Conditional Random Field (CRF)
+Definition: Undirected model conditioned on input variables
+Supporting Line: Discriminative model for structured prediction
+Formula: P(y|x) = (1/Z(x)) exp(Σᵢ wᵢ fᵢ(x,y))
+
+CONCEPT: Inference
+Definition: Computing P(unobserved | evidence)
+Supporting Line: Knowledge of some variables constrains others
+Formula: P(X|E) ∝ P(X,E) / P(E)
+
+CONCEPT: Exact Inference
+Definition: Computing true probabilities (not approximations)
+Supporting Line: Tractable for trees/small graphs
+Formula: Use variable elimination or junction tree
+
+CONCEPT: Variable Elimination
+Definition: Computing marginals by eliminating variables sequentially
+Supporting Line: Efficient order can minimize computation
+Formula: P(X) = ∫ ∏ᵢ ψᵢ(variables) d(hidden variables)
+
+CONCEPT: Belief Propagation
+Definition: Message-passing algorithm for inference
+Supporting Line: Exact on trees, approximate on loopy graphs
+Formula: Messages μᵢⱼ from i to j: sum over i's value weighted by contributions
+
+CONCEPT: Hidden Markov Model (HMM)
+Definition: Graphical model with hidden state sequence and observations
+Supporting Line: Fundamental for speech/sequence modeling
+Formula: P(x_{1:T}, z_{1:T}) = P(z₁)∏ₜ P(xₜ|zₜ)P(zₜ|z_{t-1})
+
+CONCEPT: Emission Probability
+Definition: Probability of observation given hidden state
+Supporting Line: Likelihood of observing given what state is
+Formula: P(xₜ|zₜ)
+
+CONCEPT: Transition Probability
+Definition: Probability of next state given current state
+Supporting Line: Markov assumption: depends only on current
+Formula: P(zₜ|z_{t-1})
+
+CONCEPT: Forward Algorithm
+Definition: Computing forward probabilities for inference
+Supporting Line: Dynamic programming for HMM inference
+Formula: αₜ(zₜ) = P(x_{1:t}, zₜ) via forward recursion
+
+CONCEPT: Backward Algorithm
+Definition: Computing backward probabilities from future to past
+Supporting Line: Dual to forward algorithm
+Formula: βₜ(zₜ) = P(x_{t+1:T}|zₜ) via backward recursion
+
+CONCEPT: Viterbi Algorithm
+Definition: Finding most likely hidden state sequence
+Supporting Line: Dynamic programming for most probable path
+Formula: z*_{1:T} = argmax P(z_{1:T}|x_{1:T})
+
+CONCEPT: Baum-Welch Algorithm
+Definition: EM algorithm for learning HMM parameters
+Supporting Line: Learn both transitions and emission distributions
+Formula: E-step: forward-backward, M-step: update from expected counts
+
+CONCEPT: Variational Inference
+Definition: Approximating posterior with tractable distribution
+Supporting Line: Handles intractable inference
+Formula: Minimize KL(Q||P) or maximize ELBO
+
+CONCEPT: Evidence Lower Bound (ELBO)
+Definition: Lower bound on log marginal likelihood
+Supporting Line: Objective for variational inference
+Formula: ELBO = E_Q[log P(X,Z)] - E_Q[log Q(Z)]
+
+================================================================================
+END OF COMPREHENSIVE REFERENCE
+================================================================================
